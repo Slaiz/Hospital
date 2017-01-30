@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Project", "WPF_Project\WPF_Project.csproj", "{E9A81979-F28A-448C-9312-CC25FE51B820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital_ClassLibrary", "Hospital_ClassLibrary\Hospital_ClassLibrary.csproj", "{909ABB9B-8585-4FD8-8A52-1917591574E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9A81979-F28A-448C-9312-CC25FE51B820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9A81979-F28A-448C-9312-CC25FE51B820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9A81979-F28A-448C-9312-CC25FE51B820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9A81979-F28A-448C-9312-CC25FE51B820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{909ABB9B-8585-4FD8-8A52-1917591574E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909ABB9B-8585-4FD8-8A52-1917591574E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909ABB9B-8585-4FD8-8A52-1917591574E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909ABB9B-8585-4FD8-8A52-1917591574E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

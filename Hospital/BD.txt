@@ -1,0 +1,50 @@
+(localdb)\MSSQLLocalDB
+Hospital
+
+CREATE TABLE [dbo].[Doctor] (
+    [DoctorID]   INT        IDENTITY (1, 1) NOT NULL,
+    [Name]       NCHAR (20) NOT NULL,
+    [Surname]    NCHAR (20) NOT NULL,
+    [Post]       NCHAR (20) NOT NULL,
+    [Experience] INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([DoctorID] ASC)
+);
+
+CREATE TABLE Patient
+(
+	[Id_Patient] INT NOT NULL PRIMARY KEY, 
+    [Name] NCHAR(20) NOT NULL, 
+    [Surname] NCHAR(20) NOT NULL, 
+    [Blood_Type] NCHAR(2) NOT NULL, 
+    [Birth_Date] DATETIME NOT NULL,
+
+)
+
+CREATE TABLE [dbo].[Examination] (
+    [ExaminationID] INT      IDENTITY (1, 1) NOT NULL,
+    [DoctorID]      INT      NOT NULL,
+    [PatientID]     INT      NOT NULL,
+    [DataStart]     DATE     NOT NULL,
+    [TimeStart]     TIME (7) NOT NULL,
+    [TimeEnd]       TIME (7) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ExaminationID] ASC),
+    CONSTRAINT [FK_Examination_ToPatient] FOREIGN KEY ([PatientID]) REFERENCES [dbo].[Patient] ([PatientID]),
+    CONSTRAINT [FK_Examination_ToDoctor] FOREIGN KEY ([DoctorID]) REFERENCES [dbo].[Doctor] ([DoctorID])
+);
+
+INSERT INTO [dbo].[Doctor] ([DoctorID], [Name], [Surname], [Post], [Experience]) VALUES (1, N'Sviatoslav                                        ', N'Komar                                             ', N'Surgeon             ', 2)
+INSERT INTO [dbo].[Doctor] ([DoctorID], [Name], [Surname], [Post], [Experience]) VALUES (2, N'Taras                                             ', N'Moryn                                             ', N'Surgeon             ', 5)
+INSERT INTO [dbo].[Doctor] ([DoctorID], [Name], [Surname], [Post], [Experience]) VALUES (3, N'Roman                                             ', N'Tire                                              ', N'Surgeon             ', 4)
+INSERT INTO [dbo].[Doctor] ([DoctorID], [Name], [Surname], [Post], [Experience]) VALUES (4, N'John                                              ', N'Reny                                              ', N'Surgeon             ', 12)
+
+SET IDENTITY_INSERT [dbo].[Examination] ON
+INSERT INTO [dbo].[Examination] ([ExaminationID], [DoctorID], [PatientID], [DataStart], [TimeStart], [TimeEnd]) VALUES (3, 2, 3, N'2016-12-01', N'14:30:00', N'15:00:00')
+INSERT INTO [dbo].[Examination] ([ExaminationID], [DoctorID], [PatientID], [DataStart], [TimeStart], [TimeEnd]) VALUES (4, 1, 3, N'2016-12-03', N'12:00:00', N'12:50:00')
+INSERT INTO [dbo].[Examination] ([ExaminationID], [DoctorID], [PatientID], [DataStart], [TimeStart], [TimeEnd]) VALUES (5, 2, 1, N'2016-12-24', N'12:00:00', N'12:40:00')
+SET IDENTITY_INSERT [dbo].[Examination] OFF
+
+SET IDENTITY_INSERT [dbo].[Patient] ON
+INSERT INTO [dbo].[Patient] ([PatientID], [Name], [Surname], [BloodType], [BirthDate]) VALUES (1, N'Nazar                                             ', N'Lolo                                              ', N'4-', N'1998-02-03')
+INSERT INTO [dbo].[Patient] ([PatientID], [Name], [Surname], [BloodType], [BirthDate]) VALUES (3, N'Ivan                                              ', N'Porto                                             ', N'2+', N'1995-04-05')
+INSERT INTO [dbo].[Patient] ([PatientID], [Name], [Surname], [BloodType], [BirthDate]) VALUES (4, N'Bogdan                                            ', N'Open                                              ', N'3-', N'1990-12-03')
+SET IDENTITY_INSERT [dbo].[Patient] OFF
