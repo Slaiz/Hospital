@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Migrations.Model;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,7 @@ namespace Hospital_ClassLibrary.Model
 {
     public class DoctorModel
     {
+        [Key]
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string DoctorSurname { get; set; }

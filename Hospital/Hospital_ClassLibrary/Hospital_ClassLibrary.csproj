@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,25 +51,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IDoctorRepository.cs" />
-    <Compile Include="Abstract\IExaminationRepository.cs" />
-    <Compile Include="Abstract\IPatientRepository.cs" />
-    <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\EFDoctorRepository.cs" />
-    <Compile Include="Concrete\EFExaminationRepository.cs" />
-    <Compile Include="Concrete\EFPatientRepository.cs" />
+    <Compile Include="Doctor.cs">
+      <DependentUpon>HospitalBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Examination.cs">
+      <DependentUpon>HospitalBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospitalBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HospitalBD.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model\DoctorModel.cs" />
     <Compile Include="Model\ExaminationModel.cs" />
     <Compile Include="Model\PatientModel.cs" />
+    <Compile Include="Patient.cs">
+      <DependentUpon>HospitalBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\DoctorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="HospitalBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HospitalBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HospitalBD.edmx.diagram">
+      <DependentUpon>HospitalBD.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Content Include="HospitalBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HospitalBD.edmx</DependentUpon>
+      <LastGenOutput>HospitalBD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="HospitalBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HospitalBD.edmx</DependentUpon>
+      <LastGenOutput>HospitalBD.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

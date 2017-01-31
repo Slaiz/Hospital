@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_Project.View;
 
 namespace WPF_Project
 {
@@ -23,6 +24,25 @@ namespace WPF_Project
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void DButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorView dView = new DoctorView();
+            dView.Show();
+        }
+
+        private void PButton_Click(object sender, RoutedEventArgs e)
+        {
+            PatientView pView = new PatientView();
+            pView.Show();
+        }
+
+        private void EButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExaminationView eView = new ExaminationView();
+            eView.Show();
         }
     }
 }

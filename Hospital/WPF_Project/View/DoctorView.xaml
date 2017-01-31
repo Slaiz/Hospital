@@ -1,0 +1,25 @@
+﻿<Window x:Class="WPF_Project.View.DoctorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Project.View"
+        mc:Ignorable="d"
+        Title="DoctorView" Height="300" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DataGrid AutoGenerateColumns="False" ItemsSource = "{Binding DoctorList}" >
+            <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding DoctorID}" Header="Id" Width="40"/>
+                <DataGridTextColumn Binding="{Binding DoctorName}" Header="Name" Width="100"/>
+                <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="Surname" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Post}" Header="Post" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Experience}" Header="Experience" Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
