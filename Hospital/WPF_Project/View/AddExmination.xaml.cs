@@ -10,22 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hospital_ClassLibrary.ViewModel;
-using WPF_Project.View;
 
-namespace WPF_Project
+namespace WPF_Project.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddExmination.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddExmination : Window
     {
-        public MainWindow()
+        public AddExmination()
         {
-            var doctorViewModel = new DoctorViewModel();
-            DataContext = doctorViewModel;
             InitializeComponent();
         }
     }

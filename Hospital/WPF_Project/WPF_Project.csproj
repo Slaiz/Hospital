@@ -64,12 +64,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\AddExmination.xaml.cs">
+      <DependentUpon>AddExmination.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExaminationView.xaml.cs">
       <DependentUpon>ExaminationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientView.xaml.cs">
       <DependentUpon>PatientView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddExmination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DoctorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

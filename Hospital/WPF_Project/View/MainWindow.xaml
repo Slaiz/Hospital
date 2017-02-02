@@ -5,12 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
-        <StackPanel>
-            <Button Content="Patient Table" Height="40" Width="75" Click="PButton_Click" VerticalAlignment="Center" HorizontalAlignment="Left" />
-            <Button Content="Doctor Table" Height="40" Width="75" Click="DButton_Click" />
-            <Button Content="Examination Table" Height="40" Width="75" Click="EButton_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="900"/>
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel LastChildFill="True" Grid.Row="0" Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top" TextAlignment="Center" Height="50">
+                <Run FontSize="32" Foreground="Red" FontWeight="Bold"> Hospital </Run>
+            </TextBlock>
+            <Button DockPanel.Dock="Bottom" Background="SlateGray" Content="Exit" Height="25" Width="75" />
+            <ComboBox DockPanel.Dock="Left" Height="35" Width="120">
+                <TextBlock>LG Nexus 5X</TextBlock>
+                <TextBlock>Huawai Nexus 6P</TextBlock>
+                <TextBlock>iPhone 6S</TextBlock>
+            </ComboBox>
+            <Button DockPanel.Dock="Right" Background="DarkRed" Content="Add Examination" Height="35" Width="90" />
+            <TextBox IsHitTestVisible="True" Height="35" Width="240" HorizontalAlignment="Left"/>
+        </DockPanel>
+        <ToolBarTray Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" Width="85" HorizontalAlignment="Right" Margin="0,0,28,0" Grid.ColumnSpan="2">
+            <ToolBar HorizontalAlignment="Right" Width="85" Margin="5 10 0 0">
+                <Button Content="Table &#xa;Doctor" Height="50" Width="75" Margin="0 5 0 5" BorderBrush="Aqua" BorderThickness="4"/>
+                <Button Content="Table &#xa;Patient"  Height="50" Width="75"  Margin="0 5 0 5" BorderBrush="Chartreuse" BorderThickness="4"/>
+                <Button Content="     Table &#xa;Examination "  Height="50" Width="75"  Margin="0 5 0 5"  BorderBrush="DarkMagenta" BorderThickness="4"/>
+            </ToolBar>
+        </ToolBarTray>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <DataGrid AutoGenerateColumns="False" ItemsSource = "{Binding DoctorList}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ExaminationID}" Header="Id" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="DataStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="TimeEnd" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Post}" Header="TimeStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="DoctorID" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="DoctorName" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Post}" Header="DoctorSurname" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Experience}" Header="Post" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="PatientID" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorName}" Header="PatientName" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="PatientSurname" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Post}" Header="BloodType" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </Window>
