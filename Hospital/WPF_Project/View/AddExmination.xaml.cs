@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital_ClassLibrary.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hospital_ClassLibrary.ViewModel.Interface;
 
 namespace WPF_Project.View
 {
@@ -19,9 +21,14 @@ namespace WPF_Project.View
     /// </summary>
     public partial class AddExmination : Window
     {
+        private readonly AddExaminationViewModel addExaminationViewModel;
         public AddExmination()
         {
+            addExaminationViewModel = new AddExaminationViewModel(ViewSelector.CreateViewAction);
+
+            DataContext = addExaminationViewModel;
             InitializeComponent();
         }
+
     }
 }

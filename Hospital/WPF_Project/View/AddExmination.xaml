@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project.View"
         mc:Ignorable="d"
-        Title="AddExmination" Height="400" Width="320">
+        Title="AddExmination" MinHeight="400" MinWidth="320" MaxHeight="400" MaxWidth="320">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -47,8 +47,8 @@
         <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
         <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
 
-        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Content="->" Padding="10"/>
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="->" Padding="10"/>
+        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenDoctorTableCommand}" Padding="10"/>
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenPatientTableCommand}" Padding="10"/>
 
         <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
         

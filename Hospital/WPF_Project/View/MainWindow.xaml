@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" MinHeight="600" MinWidth="1000" MaxHeight="600" MaxWidth="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -30,9 +30,9 @@
         </DockPanel>
         <ToolBarTray Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" Width="85" HorizontalAlignment="Right" Margin="0,0,28,0" Grid.ColumnSpan="2">
             <ToolBar HorizontalAlignment="Right" Width="85" Margin="5 10 0 0">
-                <Button Content="Table &#xa;Doctor" Height="50" Width="75" Margin="0 5 0 5" BorderBrush="Aqua" BorderThickness="4"/>
-                <Button Content="Table &#xa;Patient"  Height="50" Width="75"  Margin="0 5 0 5" BorderBrush="Chartreuse" BorderThickness="4"/>
-                <Button Content="     Table &#xa;Examination "  Height="50" Width="75"  Margin="0 5 0 5"  BorderBrush="DarkMagenta" BorderThickness="4"/>
+                <Button Content="Table &#xa;Doctor" Height="50" Width="75" Command="{Binding OpenDoctorTableCommand}" Margin="0 5 0 5" BorderBrush="Aqua" BorderThickness="4"/>
+                <Button Content="Table &#xa;Patient"  Height="50" Width="75" Command="{Binding OpenPatientTableCommand}"  Margin="0 5 0 5" BorderBrush="Chartreuse" BorderThickness="4"/>
+                <Button Content="     Table &#xa;Examination "  Height="50"  Width="75" Command="{Binding OpenExaminationTableCommand}"  Margin="0 5 0 5"  BorderBrush="DarkMagenta" BorderThickness="4"/>
             </ToolBar>
         </ToolBarTray>
         <StackPanel Grid.Row="1" Grid.Column="0">

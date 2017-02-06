@@ -73,6 +73,7 @@
     <Compile Include="View\PatientView.xaml.cs">
       <DependentUpon>PatientView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewSelector.cs" />
     <Page Include="View\AddExmination.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

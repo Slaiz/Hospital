@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project.View"
         mc:Ignorable="d"
-        Title="Patient Table" Height="450" Width="600">
+        Title="Patient Table" MinHeight="450" MinWidth="600" MaxHeight="450" MaxWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="350" />

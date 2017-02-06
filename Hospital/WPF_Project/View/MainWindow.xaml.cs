@@ -22,10 +22,11 @@ namespace WPF_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainViewModel mainViewModel;
         public MainWindow()
         {
-            var doctorViewModel = new DoctorViewModel();
-            DataContext = doctorViewModel;
+            mainViewModel = new MainViewModel(ViewSelector.CreateViewAction);
+            DataContext = mainViewModel;
             InitializeComponent();
         }
     }
