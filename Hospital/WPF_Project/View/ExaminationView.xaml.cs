@@ -31,8 +31,7 @@ namespace WPF_Project.View
 
         public void ShowView()
         {
-            var view = new ExaminationView();
-            view.Show();
+            Show();
         }
     }
 }

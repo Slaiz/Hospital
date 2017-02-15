@@ -26,6 +26,7 @@ namespace WPF_Project
         public MainWindow()
         {
             mainViewModel = new MainViewModel(ViewSelector.CreateViewAction);
+
             DataContext = mainViewModel;
             InitializeComponent();
         }

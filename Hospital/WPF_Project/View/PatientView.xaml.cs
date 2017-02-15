@@ -32,8 +32,7 @@ namespace WPF_Project.View
 
         public void ShowView()
         {
-            var view = new PatientView();
-            view.Show();
+            Show();
         }
     }
 }

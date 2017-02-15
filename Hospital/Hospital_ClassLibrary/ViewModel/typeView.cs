@@ -4,6 +4,7 @@
     {
         DoctorView,
         PatientView,
-        ExaminationView
+        ExaminationView,
+        AddExaminationView
     }
 }

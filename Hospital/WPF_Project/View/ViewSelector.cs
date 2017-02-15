@@ -27,12 +27,16 @@ namespace WPF_Project.View
                         view = new ExaminationView();
                         break;
                     }
+                case TypeView.AddExaminationView:
+                    {
+                        view = new AddExminationView();
+                        break;
+                    }
                 default:
                     {
                         view = null;
                         break;
                     }
-
             }
 
             return view;

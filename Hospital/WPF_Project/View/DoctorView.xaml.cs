@@ -22,8 +22,7 @@ namespace WPF_Project.View
 
         public void ShowView()
         {
-            var view = new DoctorView();
-            view.Show();
+            Show();
         }
     }
 }

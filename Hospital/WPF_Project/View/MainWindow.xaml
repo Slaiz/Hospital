@@ -19,14 +19,14 @@
             <TextBlock DockPanel.Dock="Top" TextAlignment="Center" Height="50">
                 <Run FontSize="32" Foreground="Red" FontWeight="Bold"> Hospital </Run>
             </TextBlock>
-            <Button DockPanel.Dock="Bottom" Background="SlateGray" Content="Exit" Height="25" Width="75" />
-            <ComboBox DockPanel.Dock="Left" Height="35" Width="120">
+            <ComboBox DockPanel.Dock="Left" Height="35" Width="120" Margin="5 0 5 0">
                 <TextBlock>LG Nexus 5X</TextBlock>
                 <TextBlock>Huawai Nexus 6P</TextBlock>
                 <TextBlock>iPhone 6S</TextBlock>
             </ComboBox>
-            <Button DockPanel.Dock="Right" Background="DarkRed" Content="Add Examination" Height="35" Width="90" />
-            <TextBox IsHitTestVisible="True" Height="35" Width="240" HorizontalAlignment="Left"/>
+            <TextBox IsHitTestVisible="True" Height="35" Width="240" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+            <Button Background="SlateGray" Focusable="False" Content="Find" Height="35" Width="75" Margin="0 0 5 0"/>
+            <Button DockPanel.Dock="Right" Focusable="False" Background="DarkRed" Content="Add Examination" Command="{Binding OpenAddExaminationViewCommand}" Height="35" Width="100" Margin="0 0 -200 0" />
         </DockPanel>
         <ToolBarTray Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" Width="85" HorizontalAlignment="Right" Margin="0,0,28,0" Grid.ColumnSpan="2">
             <ToolBar HorizontalAlignment="Right" Width="85" Margin="5 10 0 0">

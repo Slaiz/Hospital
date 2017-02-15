@@ -17,12 +17,12 @@ using Hospital_ClassLibrary.ViewModel.Interface;
 namespace WPF_Project.View
 {
     /// <summary>
-    /// Interaction logic for AddExmination.xaml
+    /// Interaction logic for AddExminationView.xaml
     /// </summary>
-    public partial class AddExmination : Window
+    public partial class AddExminationView : Window,IView
     {
         private readonly AddExaminationViewModel addExaminationViewModel;
-        public AddExmination()
+        public AddExminationView()
         {
             addExaminationViewModel = new AddExaminationViewModel(ViewSelector.CreateViewAction);
 
@@ -30,5 +30,9 @@ namespace WPF_Project.View
             InitializeComponent();
         }
 
+        public void ShowView()
+        {
+            Show();
+        }
     }
 }

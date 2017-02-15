@@ -11,14 +11,17 @@ namespace Hospital_ClassLibrary.ViewModel
     {
         public ICommand OpenDoctorTableCommand { get; set; }
         public ICommand OpenPatientTableCommand { get; set; }
+        public ICommand ClearCommand { get; set; }
 
         public Func<TypeView, IView> CreateViewAction { get; set; }
 
-        public AddExaminationViewModel(Func<TypeView,IView> createViewAction)
+        public AddExaminationViewModel(Func<TypeView, IView> createViewAction)
         {
             CreateViewAction = createViewAction;
+
             OpenDoctorTableCommand = new MainCommand(arg => OpenDoctorTable());
             OpenPatientTableCommand = new MainCommand(arg => OpenPatientTable());
+            ClearCommand = new MainCommand(arg => ClearField());
         }
 
         public void OpenDoctorTable()
@@ -31,6 +34,11 @@ namespace Hospital_ClassLibrary.ViewModel
         {
             var view = CreateViewAction(TypeView.PatientView);
             view.ShowView();
+        }
+
+        private void ClearField()
+        {
+            throw new NotImplementedException();
         }
 
 
