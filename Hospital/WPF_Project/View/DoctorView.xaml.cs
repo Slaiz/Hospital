@@ -14,7 +14,7 @@ namespace WPF_Project.View
         private readonly DoctorViewModel doctorViewModel;
         public DoctorView()
         {
-            doctorViewModel = new DoctorViewModel();
+            doctorViewModel = new DoctorViewModel(ViewSelector.CreateViewAction);
             DataContext = doctorViewModel;
 
             InitializeComponent();

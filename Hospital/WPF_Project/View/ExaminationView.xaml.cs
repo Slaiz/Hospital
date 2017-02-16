@@ -24,8 +24,9 @@ namespace WPF_Project.View
         private readonly ExaminationViewModel examinationViewModel;
         public ExaminationView()
         {
-            examinationViewModel = new ExaminationViewModel();
+            examinationViewModel = new ExaminationViewModel(ViewSelector.CreateViewAction);
             DataContext = examinationViewModel;
+
             InitializeComponent();
         }
 

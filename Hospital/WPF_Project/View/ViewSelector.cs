@@ -32,6 +32,16 @@ namespace WPF_Project.View
                         view = new AddExminationView();
                         break;
                     }
+                case TypeView.AddDoctorView:
+                    {
+                        view = new AddDoctorView();
+                        break;
+                    }
+                case TypeView.AddPatientView:
+                    {
+                        view = new AddPatientView();
+                        break;
+                    }
                 default:
                     {
                         view = null;

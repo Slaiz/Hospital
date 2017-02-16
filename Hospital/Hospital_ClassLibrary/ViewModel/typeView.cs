@@ -5,6 +5,8 @@
         DoctorView,
         PatientView,
         ExaminationView,
-        AddExaminationView
+        AddExaminationView,
+        AddPatientView,
+        AddDoctorView
     }
 }

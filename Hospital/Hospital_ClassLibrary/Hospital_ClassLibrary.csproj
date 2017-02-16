@@ -83,7 +83,9 @@
       <DependentUpon>HospitalBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AddDoctorViewModel.cs" />
     <Compile Include="ViewModel\AddExaminationViewModel.cs" />
+    <Compile Include="ViewModel\AddPatientViewModel.cs" />
     <Compile Include="ViewModel\Command\MainCommand.cs" />
     <Compile Include="ViewModel\DataWork.cs" />
     <Compile Include="ViewModel\DoctorViewModel.cs" />

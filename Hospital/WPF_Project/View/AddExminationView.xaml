@@ -19,11 +19,11 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <Run FontSize="22" Foreground="DarkMagenta" FontWeight="Bold"> Add </Run>
+            <Run FontSize="22" Foreground="DarkMagenta" FontWeight="Bold"> Enter Data </Run>
         </TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
             <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Doctor Name </Run>
@@ -41,16 +41,16 @@
             <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Time End </Run>
         </TextBlock>
 
-        <Button Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Command="{Binding ClearCommand}" Height="40" Width="80" Padding="10"/>
-        <Button Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Content="Add" Height="40" Width="80" Padding="10"/>
-
         <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
         <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+        
+        <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
 
         <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenDoctorTableCommand}" Padding="10"/>
         <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenPatientTableCommand}" Padding="10"/>
 
-        <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
-        
+        <Button Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Foreground="AntiqueWhite" FontWeight="Bold" Background="Aquamarine" Command="{Binding ClearCommand}" Height="40" Width="80" Padding="10"/>
+        <Button Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Content="OK" FontWeight="Bold" Foreground="DarkBlue" Background="Cornsilk" Height="40" Width="80" Padding="10"/>
+
     </Grid>
 </Window>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="WPF_Project.View.AddPatientView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Project.View"
+        mc:Ignorable="d"
+        Title="AddPatientView" MinHeight="370" MinWidth="300" MaxHeight="370" MaxWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Run FontSize="22" Foreground="Chartreuse" FontWeight="Bold"> Enter Data </Run>
+        </TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
+            <Run FontSize="16" Foreground="Chartreuse" FontWeight="Bold"> Patient Name </Run>
+        </TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
+            <Run FontSize="16" Foreground="Chartreuse" FontWeight="Bold"> Patient Surname </Run>
+        </TextBlock>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
+            <Run FontSize="16" Foreground="Chartreuse" FontWeight="Bold"> Blood Type</Run>
+        </TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
+            <Run FontSize="16" Foreground="Chartreuse" FontWeight="Bold"> Birth Date </Run>
+        </TextBlock>
+
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+        <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+
+        <DatePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
+
+        <Button Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Foreground="AntiqueWhite" FontWeight="Bold" Background="Aquamarine" Command="{Binding ClearCommand}" Height="40" Width="80" Padding="10"/>
+        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="OK" FontWeight="Bold" Foreground="DarkBlue" Background="Cornsilk" Height="40" Width="80" Padding="10"/>
+
+    </Grid>
+</Window>

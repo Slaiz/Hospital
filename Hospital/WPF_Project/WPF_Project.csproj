@@ -64,8 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\AddDoctorView.xaml.cs">
+      <DependentUpon>AddDoctorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddExminationView.xaml.cs">
       <DependentUpon>AddExminationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddPatientView.xaml.cs">
+      <DependentUpon>AddPatientView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExaminationView.xaml.cs">
       <DependentUpon>ExaminationView.xaml</DependentUpon>
@@ -74,7 +80,15 @@
       <DependentUpon>PatientView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewSelector.cs" />
+    <Page Include="View\AddDoctorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddExminationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddPatientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

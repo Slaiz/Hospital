@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
 namespace Hospital_ClassLibrary.ViewModel
@@ -7,22 +8,53 @@ namespace Hospital_ClassLibrary.ViewModel
     {
         public List<Doctor> GetDoctorList()
         {
-            throw new System.NotImplementedException();
+            var context = new HospitalEntities();
+
+            var doctors = context.Doctors.ToList();
+
+            context.Dispose();
+
+            return doctors;
         }
 
         public List<Patient> GetPatientList()
         {
-            throw new System.NotImplementedException();
+            var context = new HospitalEntities();
+
+            var patients = context.Patients.ToList();
+
+            context.Dispose();
+
+            return patients;
         }
 
         public List<Examination> GetExaminationList()
         {
-            throw new System.NotImplementedException();
+            var context = new HospitalEntities();
+
+            var examination = context.Examinations.ToList();
+
+            context.Dispose();
+
+            return examination;
         }
 
-        public void AddDoctor()
+        public void AddDoctor(string doctorName, string doctorSurname, string post, int experience)
         {
-            throw new System.NotImplementedException();
+            var context = new HospitalEntities();;
+
+            Doctor dr = new Doctor();
+
+            dr.DoctorName = doctorName;
+            dr.DoctorSurname = doctorSurname;
+            dr.Post = post;
+            dr.Experience = experience;
+
+            context.Doctors.Add(dr);
+
+            context.SaveChanges();
+
+            context.Dispose();
         }
 
         public void AddPatient()

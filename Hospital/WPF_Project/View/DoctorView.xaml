@@ -19,7 +19,7 @@
 
             <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False" ItemsSource = "{Binding DoctorList}" >
             <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding DoctorID}" Header="Id" Width="40"/>
+                <DataGridTextColumn Binding="{Binding DoctorID}" Header="Id" Width="40"/>
                 <DataGridTextColumn Binding="{Binding DoctorName}" Header="Name" Width="100"/>
                 <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="Surname" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Post}" Header="Post" Width="100"/>
@@ -27,7 +27,7 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        <Button Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Center" Content="Add" Height="35" Width="100" Margin="10" Foreground="White" Background="Chartreuse"/>
+        <Button Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Center" Content="Add" Command="{Binding OpenAddDoctorViewCommand}" Height="35" Width="100" Margin="10" Foreground="White" Background="Chartreuse"/>
         <Button Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" Content="Delete" Height="35" Width="100" Margin="10" Foreground="White" Background="Red"/>
         <Button Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Center" Content="Edit" Height="35" Width="100" Margin="10" Foreground="White" Background="DeepSkyBlue"/>
         

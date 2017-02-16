@@ -17,15 +17,16 @@ using Hospital_ClassLibrary.ViewModel.Interface;
 namespace WPF_Project.View
 {
     /// <summary>
-    /// Interaction logic for PatientView.xaml
+    /// Interaction logic for AddDoctorView.xaml
     /// </summary>
-    public partial class PatientView : Window, IView
+    public partial class AddDoctorView : Window, IView
     {
-        private readonly PatientViewModel patientViewModel;
-        public PatientView()
+        private readonly AddDoctorViewModel addDoctorViewModel;
+        public AddDoctorView()
         {
-            patientViewModel = new PatientViewModel(ViewSelector.CreateViewAction);
-            DataContext = patientViewModel;
+            addDoctorViewModel = new AddDoctorViewModel();
+
+            DataContext = addDoctorViewModel;
 
             InitializeComponent();
         }

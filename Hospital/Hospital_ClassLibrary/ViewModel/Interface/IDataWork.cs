@@ -11,7 +11,7 @@ namespace Hospital_ClassLibrary.ViewModel.Interface
         List<Patient> GetPatientList();
         List<Examination> GetExaminationList();
 
-        void AddDoctor();
+        void AddDoctor(string doctorName, string doctorSurname, string post, int experience);
         void AddPatient();
         void AddExamination();
 
