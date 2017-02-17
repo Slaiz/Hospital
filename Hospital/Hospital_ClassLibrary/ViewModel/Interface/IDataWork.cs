@@ -12,15 +12,15 @@ namespace Hospital_ClassLibrary.ViewModel.Interface
         List<Examination> GetExaminationList();
 
         void AddDoctor(string doctorName, string doctorSurname, string post, int experience);
-        void AddPatient();
-        void AddExamination();
+        void AddPatient(string patientName, string patientSurname, string bloodType, DateTime birthDate);
+        void AddExamination(int doctorID, int patientId, DateTime dataStart, TimeSpan timeStart, TimeSpan timeEnd);
 
-        void DeleteDoctor();
-        void DeletePatient();
-        void DeleteExamination();
+        void DeleteDoctor(Doctor selectedItem);
+        void DeletePatient(Patient selectedItem);
+        void DeleteExamination(Examination selectedItem);
 
-        void UpdateDoctor();
-        void UpdatePatient();
-        void UpdateExamination();
+        void UpdateDoctor(Doctor selectedItem, string doctorName, string doctorSurname, string post, int experience);
+        void UpdatePatient(Patient selectedItem, string patientName, string patientSurname, string bloodType, DateTime birthDate);
+        void UpdateExamination(Examination selectedItem, int doctorID, int patientId, DateTime dataStart, TimeSpan timeStart, TimeSpan timeEnd);
     }
 }

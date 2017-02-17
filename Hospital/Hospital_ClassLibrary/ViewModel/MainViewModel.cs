@@ -12,9 +12,9 @@ namespace Hospital_ClassLibrary.ViewModel
         public ICommand OpenExaminationTableCommand { get; set; }
         public ICommand OpenAddExaminationViewCommand { get; set; }
 
-        public Func<TypeView, IView> CreateViewAction { get; set; }
+        public Func<object, TypeView, IView> CreateViewAction { get; set; }
 
-        public MainViewModel(Func<TypeView, IView> createViewAction)
+        public MainViewModel(Func<object, TypeView, IView> createViewAction)
         {
             CreateViewAction = createViewAction;
 
@@ -26,25 +26,25 @@ namespace Hospital_ClassLibrary.ViewModel
 
         public void OpenDoctorTable()
         {
-            var view = CreateViewAction(TypeView.DoctorView);
+            var view = CreateViewAction(null, TypeView.DoctorView);
             view.ShowView();
         }
 
         public void OpenPatientTable()
         {
-            var view = CreateViewAction(TypeView.PatientView);
+            var view = CreateViewAction(null, TypeView.PatientView);
             view.ShowView();
         }
 
         public void OpenExaminationTable()
         {
-            var view = CreateViewAction(TypeView.ExaminationView);
+            var view = CreateViewAction(null, TypeView.ExaminationView);
             view.ShowView();
         }
 
         private void OpenAddExaminationView()
         {
-            var view = CreateViewAction(TypeView.AddExaminationView);
+            var view = CreateViewAction(null, TypeView.AddExaminationView);
             view.ShowView();
         }
     }

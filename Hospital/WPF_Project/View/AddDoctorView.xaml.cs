@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hospital_ClassLibrary.ViewModel;
+using Hospital_ClassLibrary.ViewModel.AddViewModel;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
 namespace WPF_Project.View

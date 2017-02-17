@@ -1,55 +1,71 @@
-﻿using Hospital_ClassLibrary.ViewModel;
+﻿using Hospital_ClassLibrary;
+using Hospital_ClassLibrary.ViewModel;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
 namespace WPF_Project.View
 {
     public static class ViewSelector
     {
-        public static IView CreateViewAction(TypeView typeView)
+        public static IView CreateViewAction(object o,TypeView typeView)
         {
-            IView view;
+            IView viewEmpty;
 
             switch (typeView)
             {
                 case TypeView.DoctorView:
                     {
-                        view = new DoctorView();
+                        viewEmpty = new DoctorView();
                         break;
                     }
 
                 case TypeView.PatientView:
                     {
-                        view = new PatientView();
+                        viewEmpty = new PatientView();
                         break;
                     }
                 case TypeView.ExaminationView:
                     {
-                        view = new ExaminationView();
+                        viewEmpty = new ExaminationView();
                         break;
                     }
                 case TypeView.AddExaminationView:
                     {
-                        view = new AddExminationView();
+                        viewEmpty = new AddExminationView();
                         break;
                     }
                 case TypeView.AddDoctorView:
                     {
-                        view = new AddDoctorView();
+                        viewEmpty = new AddDoctorView();
                         break;
                     }
                 case TypeView.AddPatientView:
                     {
-                        view = new AddPatientView();
+                        viewEmpty = new AddPatientView();
+                        break;
+                    }
+                case TypeView.EditExaminationView:
+                    {
+                        viewEmpty = new EditExaminationView((Examination)o);
+                        break;
+                    }
+                case TypeView.EditDoctorView:
+                    {
+                        viewEmpty = new EditDoctorView((Doctor)o);
+                        break;
+                    }
+                case TypeView.EditPatientView:
+                    {
+                        viewEmpty = new EditPatientView((Patient)o);
                         break;
                     }
                 default:
                     {
-                        view = null;
+                        viewEmpty = null;
                         break;
                     }
             }
 
-            return view;
+            return viewEmpty;
         }
     }
 }

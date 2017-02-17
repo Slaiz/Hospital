@@ -7,6 +7,9 @@
         ExaminationView,
         AddExaminationView,
         AddPatientView,
-        AddDoctorView
+        AddDoctorView,
+        EditDoctorView,
+        EditPatientView,
+        EditExaminationView
     }
 }

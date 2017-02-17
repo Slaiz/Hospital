@@ -15,6 +15,7 @@
             <ColumnDefinition Width="900"/>
             <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
+        
         <DockPanel LastChildFill="True" Grid.Row="0" Grid.Column="0">
             <TextBlock DockPanel.Dock="Top" TextAlignment="Center" Height="50">
                 <Run FontSize="32" Foreground="Red" FontWeight="Bold"> Hospital </Run>
@@ -28,6 +29,7 @@
             <Button Background="SlateGray" Focusable="False" Content="Find" Height="35" Width="75" Margin="0 0 5 0"/>
             <Button DockPanel.Dock="Right" Focusable="False" Background="MediumVioletRed" Content="Add Examination" Command="{Binding OpenAddExaminationViewCommand}" Height="35" Width="100" Margin="0 0 -200 0" />
         </DockPanel>
+        
         <ToolBarTray Grid.Row="0" Grid.RowSpan="2" Orientation="Vertical" Width="85" HorizontalAlignment="Right" Margin="0,0,28,0" Grid.ColumnSpan="2">
             <ToolBar HorizontalAlignment="Right" Width="85" Margin="5 10 0 0">
                 <Button Content="Table &#xa;Doctor" Height="50" Width="75" Command="{Binding OpenDoctorTableCommand}" Margin="0 5 0 5" BorderBrush="Aqua" BorderThickness="4"/>
@@ -35,21 +37,23 @@
                 <Button Content="     Table &#xa;Examination "  Height="50"  Width="75" Command="{Binding OpenExaminationTableCommand}"  Margin="0 5 0 5"  BorderBrush="DarkMagenta" BorderThickness="4"/>
             </ToolBar>
         </ToolBarTray>
+        
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <DataGrid AutoGenerateColumns="False" ItemsSource = "{Binding DoctorList}">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource = "{Binding DoctorList}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ExaminationID}" Header="Id" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="DataStart" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="TimeEnd" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Post}" Header="TimeStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DataStart}" Header="DataStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding TimeStart}" Header="TimeStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding TimeEnd}" Header="TimeEnd" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding DoctorID}" Header="DoctorID" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="DoctorName" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Post}" Header="DoctorSurname" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Experience}" Header="Post" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="PatientID" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorName}" Header="PatientName" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="PatientSurname" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Post}" Header="BloodType" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorName}" Header="DoctorName" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="DoctorSurname" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Post}" Header="Post" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding PatientID}" Header="PatientID" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding PatientName}" Header="PatientName" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding PatientSurname}" Header="PatientSurname" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding BloodType}" Header="BloodType" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding BirthDate}" Header="BirthDate" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

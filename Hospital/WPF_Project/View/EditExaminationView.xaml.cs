@@ -11,23 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Hospital_ClassLibrary.ViewModel;
+using Hospital_ClassLibrary;
+using Hospital_ClassLibrary.ViewModel.EditViewModel;
 using Hospital_ClassLibrary.ViewModel.Interface;
-using Hospital_ClassLibrary.ViewModel.TableViewModel;
 
 namespace WPF_Project.View
 {
     /// <summary>
-    /// Interaction logic for ExaminationView.xaml
+    /// Interaction logic for EditExaminationView.xaml
     /// </summary>
-    public partial class ExaminationView : Window, IView
+    public partial class EditExaminationView : Window,IView
     {
-        private readonly ExaminationViewModel examinationViewModel;
-        public ExaminationView()
+        public EditExaminationView(Examination item)
         {
-            examinationViewModel = new ExaminationViewModel(ViewSelector.CreateViewAction);
-            DataContext = examinationViewModel;
-
+            var editExaminationViewModel = new EditExaminationViewModel(item); 
             InitializeComponent();
         }
 

@@ -1,11 +1,11 @@
-﻿<Window x:Class="WPF_Project.View.AddPatientView"
+﻿<Window x:Class="WPF_Project.View.EditPatientView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project.View"
         mc:Ignorable="d"
-        Title="AddPatientView" MinHeight="370" MinWidth="300" MaxHeight="370" MaxWidth="300">
+        Title="EditPatientView" MinHeight="370" MinWidth="300" MaxHeight="370" MaxWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -45,7 +45,7 @@
         <DatePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
 
         <Button Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Command="{Binding ClearFieldsCommand}" Foreground="AntiqueWhite" FontWeight="Bold" Background="Aquamarine" Height="40" Width="80" Padding="10"/>
-        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="OK" Command="{Binding AddPatientCommand}" FontWeight="Bold" Foreground="DarkBlue" Background="Cornsilk" Height="40" Width="80" Padding="10"/>
+        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="OK" Command="{Binding EditPatientCommand}" FontWeight="Bold" Foreground="DarkBlue" Background="Cornsilk" Height="40" Width="80" Padding="10"/>
 
     </Grid>
 </Window>
