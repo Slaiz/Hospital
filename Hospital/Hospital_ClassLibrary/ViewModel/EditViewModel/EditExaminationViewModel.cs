@@ -17,20 +17,20 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
 
         public int DoctorID { get; set; }
         public int PatientID { get; set; }
-        public DateTime DataStart { get; set; }
+        public DateTime DateStart { get; set; }
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
 
-        public EditExaminationViewModel(Examination SelectedItem)
+        public EditExaminationViewModel(Examination selectedItem)
         {
-            DoctorID = SelectedItem.DoctorID;
-            PatientID = SelectedItem.PatientID;
-            DataStart = SelectedItem.DataStart;
-            TimeStart = SelectedItem.TimeStart;
-            TimeEnd = SelectedItem.TimeEnd;
+            DoctorID = selectedItem.DoctorID;
+            PatientID = selectedItem.PatientID;
+            DateStart = selectedItem.DataStart;
+            TimeStart = selectedItem.TimeStart;
+            TimeEnd = selectedItem.TimeEnd;
 
             ClearFieldsCommand = new MainCommand(arg => ClearFields());
-            EditExaminationCommand = new MainCommand(arg => EditExamination(SelectedItem));
+            EditExaminationCommand = new MainCommand(arg => EditExamination(selectedItem));
         }
 
         private void ClearFields()
@@ -39,9 +39,9 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
             PatientID = 0;
         }
 
-        private void EditExamination(Examination SelectedItem)
+        private void EditExamination(Examination selectedItem)
         {
-            DWork.UpdateExamination(SelectedItem, DoctorID, PatientID, DataStart, TimeStart, TimeEnd);
+            DWork.UpdateExamination(selectedItem, DoctorID, PatientID, DateStart, TimeStart, TimeEnd);
 
             MessageBox.Show("Examination was updated !");
         }

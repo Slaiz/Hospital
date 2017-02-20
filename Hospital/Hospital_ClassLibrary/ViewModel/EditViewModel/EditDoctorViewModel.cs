@@ -19,15 +19,15 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
         public string Post { get; set; }
         public int Experience { get; set; }
 
-        public EditDoctorViewModel(Doctor SelectedItem)
+        public EditDoctorViewModel(Doctor selectedItem)
         {
-            DoctorName = SelectedItem.DoctorName;
-            DoctorSurname = SelectedItem.DoctorSurname;
-            Post = SelectedItem.Post;
-            Experience = SelectedItem.Experience;
+            DoctorName = selectedItem.DoctorName;
+            DoctorSurname = selectedItem.DoctorSurname;
+            Post = selectedItem.Post;
+            Experience = selectedItem.Experience;
 
             ClearFieldsCommand = new MainCommand(arg => ClearFields());
-            EditDoctorCommand = new MainCommand(arg => EditDoctor(SelectedItem));
+            EditDoctorCommand = new MainCommand(arg => EditDoctor(selectedItem));
         }
         private void ClearFields()
         {
@@ -36,9 +36,9 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
             Post = " ";
             Experience = 0;
         }
-        private void EditDoctor(Doctor SelectedItem)
+        private void EditDoctor(Doctor selectedItem)
         {
-            DWork.UpdateDoctor(SelectedItem, DoctorName, DoctorSurname, Post, Experience);
+            DWork.UpdateDoctor(selectedItem, DoctorName, DoctorSurname, Post, Experience);
 
             MessageBox.Show("Doctor was updated !");
         }

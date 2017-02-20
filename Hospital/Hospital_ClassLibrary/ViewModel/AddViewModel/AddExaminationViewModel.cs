@@ -19,7 +19,7 @@ namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 
         public int DoctorID { get; set; }
         public int PatientID { get; set; }
-        public DateTime DataStart { get; set; }
+        public DateTime DateStart { get; set; }
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
 
@@ -55,7 +55,7 @@ namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 
         private void AddExamination()
         {
-            DWork.AddExamination(DoctorID, PatientID, DataStart, TimeStart, TimeEnd);
+            DWork.AddExamination(DoctorID, PatientID, DateStart, TimeStart, TimeEnd);
 
             MessageBox.Show("Examination was added !");
         }

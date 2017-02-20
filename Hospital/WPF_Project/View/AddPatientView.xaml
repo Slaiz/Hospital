@@ -38,11 +38,11 @@
             <Run FontSize="16" Foreground="Chartreuse" FontWeight="Bold"> Birth Date </Run>
         </TextBlock>
 
-        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
-        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
-        <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding PatientName}" Height="30" Width="120"/>
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding PatientSurname}" Height="30" Width="120"/>
+        <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding BloodType}" Height="30" Width="120"/>
 
-        <DatePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
+        <DatePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" SelectedDateFormat="Short" DisplayDateStart="1930-01-01" DisplayDateEnd="2018-01-01"  FirstDayOfWeek="Monday" SelectedDate="{Binding BirthDate}" Height="30" Width="120"/>
 
         <Button Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Command="{Binding ClearFieldsCommand}" Foreground="AntiqueWhite" FontWeight="Bold" Background="Aquamarine" Height="40" Width="80" Padding="10"/>
         <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="OK" Command="{Binding AddPatientCommand}" FontWeight="Bold" Foreground="DarkBlue" Background="Cornsilk" Height="40" Width="80" Padding="10"/>

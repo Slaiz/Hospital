@@ -22,7 +22,7 @@
                 <DataGridTextColumn Binding="{Binding ExaminationID}" Header="Id" Width="40"/>
                 <DataGridTextColumn Binding="{Binding DoctorID}" Header="DoctorID" Width="100"/>
                 <DataGridTextColumn Binding="{Binding PatientID}" Header="PatientID" Width="100"/>
-                <DataGridTextColumn Binding="{Binding DataStart}" Header="DataStart" Width="100"/>
+                <DataGridTextColumn Binding="{Binding DateStart}" Header="DateStart" Width="100"/>
                 <DataGridTextColumn Binding="{Binding TimeStart}" Header="TimeStart" Width="70"/>
                 <DataGridTextColumn Binding="{Binding TimeEnd}" Header="TimeEnd" Width="70"/>
             </DataGrid.Columns>

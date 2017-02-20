@@ -22,9 +22,12 @@ namespace WPF_Project.View
     /// </summary>
     public partial class EditExaminationView : Window,IView
     {
+        private readonly EditExaminationViewModel editExaminationViewModel;
         public EditExaminationView(Examination item)
         {
-            var editExaminationViewModel = new EditExaminationViewModel(item); 
+            editExaminationViewModel = new EditExaminationViewModel(item);
+            DataContext = editExaminationViewModel;
+
             InitializeComponent();
         }
 

@@ -11,7 +11,7 @@ namespace Hospital_ClassLibrary.ViewModel.Interface
 
         int PatientID { get; set; }
 
-        DateTime DataStart { get; set; }
+        DateTime DateStart { get; set; }
 
         TimeSpan TimeStart { get; set; }
 

@@ -20,15 +20,15 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
         public string BloodType { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public EditPatientViewModel(Patient SelectedItem)
+        public EditPatientViewModel(Patient selectedItem)
         {
-            PatientName = SelectedItem.PatientName;
-            PatientSurname = SelectedItem.PatientSurname;
-            BloodType = SelectedItem.BloodType;
-            BirthDate = SelectedItem.BirthDate;
+            PatientName = selectedItem.PatientName;
+            PatientSurname = selectedItem.PatientSurname;
+            BloodType = selectedItem.BloodType;
+            BirthDate = selectedItem.BirthDate;
 
             ClearFieldsCommand = new MainCommand(arg => ClearFields());
-            AddPatientCommand = new MainCommand(arg => AddPatient(SelectedItem));
+            AddPatientCommand = new MainCommand(arg => AddPatient(selectedItem));
         }
 
         private void ClearFields()
@@ -38,7 +38,7 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
             BloodType = " ";
         }
 
-        private void AddPatient(Patient SelectedItem)
+        private void AddPatient(Patient selectedItem)
         {
             DWork.AddPatient(PatientName, PatientSurname, BloodType, BirthDate);
 

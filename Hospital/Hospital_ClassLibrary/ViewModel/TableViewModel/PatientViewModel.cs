@@ -42,7 +42,7 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
         {
             if (SelectedPatient != null)
             {
-                var view = CreateViewAction(SelectedPatient, TypeView.AddPatientView);
+                var view = CreateViewAction(SelectedPatient, TypeView.EditPatientView);
                 view.ShowView();
             }
             else MessageBox.Show("Please choose patient to edit !");

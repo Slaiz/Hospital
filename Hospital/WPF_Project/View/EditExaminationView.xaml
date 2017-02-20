@@ -26,13 +26,13 @@
             <Run FontSize="22" Foreground="DarkMagenta" FontWeight="Bold"> Enter Data </Run>
         </TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
-            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Doctor Name </Run>
+            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Doctor Id </Run>
         </TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
-            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Patient Name </Run>
+            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Patient Id </Run>
         </TextBlock>
         <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
-            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Data Start </Run>
+            <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Date Start </Run>
         </TextBlock>
         <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Padding="10">
             <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Time Start </Run>
@@ -41,10 +41,12 @@
             <Run FontSize="16" Foreground="DarkMagenta" FontWeight="Bold"> Time End </Run>
         </TextBlock>
 
-        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
-        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="30" Width="120"/>
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding DoctorID}"  Height="30" Width="120"/>
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding PatientID}" Height="30" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding TimeStart}" Height="30" Width="120"/>
+        <TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Text="{Binding TimeEnd}" Height="30" Width="120"/>
 
-        <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" Height="30" Width="120" />
+        <DatePicker Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsDropDownOpen="False" SelectedDateFormat="Short" DisplayDateStart="1930-01-01" DisplayDateEnd="2018-01-01"  FirstDayOfWeek="Monday" SelectedDate="{Binding DateStart}" Height="30" Width="120" />
 
         <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenDoctorTableCommand}" Padding="10"/>
         <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="->" Command="{Binding OpenPatientTableCommand}" Padding="10"/>

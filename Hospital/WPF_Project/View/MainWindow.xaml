@@ -42,7 +42,7 @@
             <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource = "{Binding DoctorList}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ExaminationID}" Header="Id" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DataStart}" Header="DataStart" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DateStart}" Header="DateStart" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding TimeStart}" Header="TimeStart" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding TimeEnd}" Header="TimeEnd" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding DoctorID}" Header="DoctorID" Width="Auto"/>

@@ -23,12 +23,12 @@
                 <DataGridTextColumn Binding="{Binding PatientName}" Header="Name" Width="100"/>
                 <DataGridTextColumn Binding="{Binding PatientSurname}" Header="Surname" Width="100"/>
                 <DataGridTextColumn Binding="{Binding BloodType}" Header="BloodType" Width="100"/>
-                <DataGridTextColumn Binding="{Binding BirthDate}" Header="Birthday" Width="70"/>
+                <DataGridTextColumn Binding="{Binding BirthDate}" Header="BirthDate" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <Button Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Center" Focusable="False" Content="Add" Command="{Binding OpenAddPatientViewCommand}" Height="35" Width="100" Margin="10" Foreground="White" Background="Chartreuse"/>
-        <Button Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" Focusable="False" Content="Delete" Command="{Binding DeletePatient}" Height="35" Width="100" Margin="10" Foreground="White" Background="Red"/>
+        <Button Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" Focusable="False" Content="Delete" Command="{Binding DeletePatientCommand}" Height="35" Width="100" Margin="10" Foreground="White" Background="Red"/>
         <Button Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Center" Focusable="False" Content="Edit" Command="{Binding OpenEditPatientViewCommand}" Height="35" Width="100" Margin="10" Foreground="White" Background="DeepSkyBlue"/>
 
     </Grid>
