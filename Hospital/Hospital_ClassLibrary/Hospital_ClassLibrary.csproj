@@ -61,32 +61,35 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>HospitalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Doctor.cs">
-      <DependentUpon>HospitalBD.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Examination.cs">
-      <DependentUpon>HospitalBD.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalBD.Context.cs">
+    <Compile Include="HospitalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalBD.Context.tt</DependentUpon>
+      <DependentUpon>HospitalModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalBD.cs">
+    <Compile Include="HospitalModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalBD.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalBD.Designer.cs">
+    <Compile Include="HospitalModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalBD.edmx</DependentUpon>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\DoctorModel.cs" />
     <Compile Include="Model\ExaminationModel.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Patient.cs">
-      <DependentUpon>HospitalBD.tt</DependentUpon>
+      <DependentUpon>HospitalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AddViewModel\AddDoctorViewModel.cs" />
@@ -111,26 +114,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="HospitalBD.edmx">
+    <EntityDeploy Include="HospitalModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HospitalBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>HospitalModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="HospitalBD.edmx.diagram">
-      <DependentUpon>HospitalBD.edmx</DependentUpon>
+    <None Include="HospitalModel.edmx.diagram">
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
-    <Content Include="HospitalBD.Context.tt">
+    <Content Include="HospitalModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HospitalBD.edmx</DependentUpon>
-      <LastGenOutput>HospitalBD.Context.cs</LastGenOutput>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
+      <LastGenOutput>HospitalModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="HospitalBD.tt">
+    <Content Include="HospitalModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HospitalBD.edmx</DependentUpon>
-      <LastGenOutput>HospitalBD.cs</LastGenOutput>
+      <DependentUpon>HospitalModel.edmx</DependentUpon>
+      <LastGenOutput>HospitalModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

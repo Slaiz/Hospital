@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 using PropertyChanged;

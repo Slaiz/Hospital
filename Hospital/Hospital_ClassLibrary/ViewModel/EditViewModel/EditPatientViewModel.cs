@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 using PropertyChanged;
@@ -11,7 +12,7 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
     public class EditPatientViewModel:IPatientViewModel
     {
         public ICommand ClearFieldsCommand { get; set; }
-        public ICommand AddPatientCommand { get; set; }
+        public ICommand EditPatientCommand { get; set; }
 
         public DataWork DWork = new DataWork();
 
@@ -28,7 +29,7 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
             BirthDate = selectedItem.BirthDate;
 
             ClearFieldsCommand = new MainCommand(arg => ClearFields());
-            AddPatientCommand = new MainCommand(arg => AddPatient(selectedItem));
+            EditPatientCommand = new MainCommand(arg => EditPatient(selectedItem));
         }
 
         private void ClearFields()
@@ -38,7 +39,7 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
             BloodType = " ";
         }
 
-        private void AddPatient(Patient selectedItem)
+        private void EditPatient(Patient selectedItem)
         {
             DWork.AddPatient(PatientName, PatientSurname, BloodType, BirthDate);
 

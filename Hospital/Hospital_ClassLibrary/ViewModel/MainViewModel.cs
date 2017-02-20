@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
@@ -7,6 +8,7 @@ namespace Hospital_ClassLibrary.ViewModel
 {
     public class MainViewModel
     {
+        
         public ICommand OpenDoctorTableCommand { get; set; }
         public ICommand OpenPatientTableCommand { get; set; }
         public ICommand OpenExaminationTableCommand { get; set; }

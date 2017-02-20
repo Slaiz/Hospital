@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 using PropertyChanged;
@@ -25,7 +26,7 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
         {
             DoctorID = selectedItem.DoctorID;
             PatientID = selectedItem.PatientID;
-            DateStart = selectedItem.DataStart;
+            DateStart = selectedItem.DateStart;
             TimeStart = selectedItem.TimeStart;
             TimeEnd = selectedItem.TimeEnd;
 

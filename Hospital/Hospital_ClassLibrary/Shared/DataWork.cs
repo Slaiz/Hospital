@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
-namespace Hospital_ClassLibrary.ViewModel
+namespace Hospital_ClassLibrary.Shared
 {
     public class DataWork:IDataWork
     {
+        public static event EventHandler<Doctor> OnAddDoctor;
+        public static event EventHandler<Patient> OnAddPatient;
+        public static event EventHandler<Examination> OnAddExamination;
+        public static event EventHandler<Doctor> OnDeleteDoctor;
+        public static event EventHandler<Patient> OnDeletePatient;
+        public static event EventHandler<Examination> OnDeleteExamination;
+        public static event Action<Doctor, Doctor> OnUpdateDoctor;
+        public static event Action<Patient, Patient> OnUpdatePatient;
+        public static event Action<Examination, Examination> OnUpdateExamination;
+
         public List<Doctor> GetDoctorList()
         {
             using (var context = new HospitalEntities())
@@ -32,7 +42,7 @@ namespace Hospital_ClassLibrary.ViewModel
             using (var context = new HospitalEntities())
             {
                 var examination = context.Examinations.ToList();
-
+                
                 return examination;
             }
         }
@@ -51,6 +61,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 context.Doctors.Add(dr);
 
                 context.SaveChanges();
+
+                DoOnAddDoctor(dr);
             }
         }
 
@@ -68,6 +80,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 context.Patients.Add(pt);
 
                 context.SaveChanges();
+
+                DoOnAddPatient(pt);
             }
         }
 
@@ -79,13 +93,15 @@ namespace Hospital_ClassLibrary.ViewModel
 
                 exm.DoctorID = doctorId;
                 exm.PatientID = patientId;
-                exm.DataStart = dateStart;
+                exm.DateStart = dateStart;
                 exm.TimeStart = timeStart;
                 exm.TimeEnd = timeEnd;
 
                 context.Examinations.Add(exm);
 
                 context.SaveChanges();
+
+                DoOnAddExamination(exm);
             }
         }
 
@@ -98,6 +114,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 context.Doctors.Remove(doctor);
 
                 context.SaveChanges();
+
+                DoOnDeleteDoctor(doctor);
             }
         }
 
@@ -110,6 +128,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 context.Patients.Remove(patient);
 
                 context.SaveChanges();
+
+                DoOnDeletePatient(patient);
             }
         }
 
@@ -117,11 +137,13 @@ namespace Hospital_ClassLibrary.ViewModel
         {
             using (var context = new HospitalEntities())
             {
-                var examination = context.Patients.First(x => x.PatientID == selectedItem.PatientID);
+                var examination = context.Examinations.First(x => x.PatientID == selectedItem.PatientID);
 
-                context.Patients.Remove(examination);
+                context.Examinations.Remove(examination);
 
                 context.SaveChanges();
+
+                DoOnDeleteExamination(examination);
             }
         }
 
@@ -137,6 +159,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 doctor.Experience = experience;
 
                 context.SaveChanges();
+
+                DoOnUpdateDoctor(doctor, selectedItem);
             }
         }
 
@@ -152,6 +176,8 @@ namespace Hospital_ClassLibrary.ViewModel
                 patient.BirthDate = birthDate;
 
                 context.SaveChanges();
+
+                DoOnUpdatePatient(patient, selectedItem);
             }
         }
 
@@ -163,12 +189,61 @@ namespace Hospital_ClassLibrary.ViewModel
 
                 examination.DoctorID = doctorId;
                 examination.PatientID = patientId;
-                examination.DataStart = dateStart;
+                examination.DateStart = dateStart;
                 examination.TimeStart = timeStart;
                 examination.TimeEnd = timeEnd;
 
                 context.SaveChanges();
+
+                DoOnUpdateExamination(examination, selectedItem);
             }
         }
+
+        #region Event Invoker
+                protected virtual void DoOnAddDoctor(Doctor e)
+                {
+                    OnAddDoctor?.Invoke(this, e);
+                }
+
+                protected virtual void DoOnAddPatient(Patient e)
+                {
+                    OnAddPatient?.Invoke(this, e);
+                }
+
+                protected virtual void DoOnAddExamination(Examination e)
+                {
+                    OnAddExamination?.Invoke(this, e);
+                }
+
+                private static void DoOnDeleteDoctor(Doctor e)
+                {
+                    OnDeleteDoctor?.Invoke(null, e);
+                }
+
+                private static void DoOnDeletePatient(Patient e)
+                {
+                    OnDeletePatient?.Invoke(null, e);
+                }
+
+                private static void DoOnDeleteExamination(Examination e)
+                {
+                    OnDeleteExamination?.Invoke(null, e);
+                }
+
+                private static void DoOnUpdateDoctor(Doctor e, Doctor p)
+                {
+                    OnUpdateDoctor?.Invoke(e, p);
+                }
+
+                private static void DoOnUpdatePatient(Patient e, Patient p)
+                {
+                    OnUpdatePatient?.Invoke(e, p);
+                }
+
+                private static void DoOnUpdateExamination(Examination e, Examination p)
+                {
+                    OnUpdateExamination?.Invoke(e, p);
+                }
+        #endregion
     }
 }

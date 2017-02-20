@@ -5,13 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="DoctorID" />
           </Key>
           <Property Name="DoctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DoctorName" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="DoctorSurname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="DoctorSurname" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Post" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Experience" Type="int" Nullable="false" />
         </EntityType>
@@ -22,7 +32,7 @@
           <Property Name="ExaminationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DoctorID" Type="int" Nullable="false" />
           <Property Name="PatientID" Type="int" Nullable="false" />
-          <Property Name="DataStart" Type="date" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
           <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
           <Property Name="TimeEnd" Type="time" Precision="7" Nullable="false" />
         </EntityType>
@@ -31,8 +41,8 @@
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PatientName" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="PatientSurname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="PatientSurname" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="BloodType" Type="nchar" MaxLength="2" Nullable="false" />
           <Property Name="BirthDate" Type="date" Nullable="false" />
         </EntityType>
@@ -61,6 +71,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HospitalModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Examination" EntityType="Self.Examination" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
@@ -78,13 +89,23 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="DoctorID" />
           </Key>
           <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DoctorName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="DoctorSurname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DoctorName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DoctorSurname" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Post" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Experience" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Examinations" Relationship="Self.FK_Examination_ToDoctor" FromRole="Doctor" ToRole="Examination" />
@@ -96,7 +117,7 @@
           <Property Name="ExaminationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DoctorID" Type="Int32" Nullable="false" />
           <Property Name="PatientID" Type="Int32" Nullable="false" />
-          <Property Name="DataStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
           <Property Name="TimeEnd" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Examination_ToDoctor" FromRole="Examination" ToRole="Doctor" />
@@ -107,8 +128,8 @@
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PatientSurname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PatientName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PatientSurname" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="BloodType" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Examinations" Relationship="Self.FK_Examination_ToPatient" FromRole="Patient" ToRole="Examination" />
@@ -138,6 +159,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="Examinations" EntityType="Self.Examination" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
@@ -156,6 +178,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="HospitalModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="HospitalModel.Doctor">
               <MappingFragment StoreEntitySet="Doctor">
@@ -173,7 +205,7 @@
                 <ScalarProperty Name="ExaminationID" ColumnName="ExaminationID" />
                 <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="DataStart" ColumnName="DataStart" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
                 <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
                 <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
               </MappingFragment>

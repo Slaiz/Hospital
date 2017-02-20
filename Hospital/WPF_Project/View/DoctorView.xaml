@@ -17,7 +17,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-            <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedDoctor}" ItemsSource = "{Binding DoctorList}" >
+            <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding SelectedDoctor}" ItemsSource = "{Binding DoctorList, NotifyOnSourceUpdated=True}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding DoctorID}" Header="Id" Width="40"/>
                 <DataGridTextColumn Binding="{Binding DoctorName}" Header="Name" Width="100"/>

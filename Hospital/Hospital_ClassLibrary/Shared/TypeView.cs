@@ -1,4 +1,4 @@
-﻿namespace Hospital_ClassLibrary.ViewModel
+﻿namespace Hospital_ClassLibrary.Shared
 {
     public enum TypeView
     {

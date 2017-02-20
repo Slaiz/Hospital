@@ -25,6 +25,7 @@ namespace Hospital_ClassLibrary
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Examination> Examinations { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }

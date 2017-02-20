@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
@@ -25,11 +26,30 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
         {
             CreateViewAction = createViewAction;
 
+            DataWork.OnAddPatient += DataWorkOnOnAddPatient;
+            DataWork.OnDeletePatient += DataWorkOnOnDeletePatient;
+            DataWork.OnUpdatePatient += DataWorkOnOnUpdatePatient;
+
             PatientList = new ObservableCollection<Patient>(DWork.GetPatientList());
 
             OpenAddPatientViewCommand = new MainCommand(arg => OpenAddPatientView());
             OpenEditPatientViewCommand = new MainCommand(arg => OpenEditPatientView());
             DeletePatientCommand = new MainCommand(arg => DeletePatient());
+        }
+
+        private void DataWorkOnOnUpdatePatient(Patient patient, Patient patient1)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DataWorkOnOnDeletePatient(object sender, Patient patient)
+        {
+            PatientList.Remove(patient);
+        }
+
+        private void DataWorkOnOnAddPatient(object sender, Patient patient)
+        {
+            PatientList.Add(patient);
         }
 
         private void OpenAddPatientView()

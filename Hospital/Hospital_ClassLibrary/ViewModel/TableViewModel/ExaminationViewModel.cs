@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
@@ -25,11 +26,30 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
         {
             CreateViewAction = createViewAction;
 
+            DataWork.OnAddExamination += DataWorkOnOnAddExamination;
+            DataWork.OnDeleteExamination += DataWorkOnOnDeleteExamination;
+            DataWork.OnUpdateExamination += DataWorkOnOnUpdateExamination;
+
             ExaminationList = new ObservableCollection<Examination>(DWork.GetExaminationList());
 
             OpenAddExaminationViewCommand = new MainCommand(arg => OpenAddExaminationView());
             OpenEditExaminationViewCommand = new MainCommand(arg => OpenEditExaminationView());
             DeleteExaminationCommand = new MainCommand(arg => DeleteExamination());
+        }
+
+        private void DataWorkOnOnUpdateExamination(Examination examination, Examination examination1)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DataWorkOnOnDeleteExamination(object sender, Examination examination)
+        {
+            ExaminationList.Remove(examination);
+        }
+
+        private void DataWorkOnOnAddExamination(object sender, Examination examination)
+        {
+            ExaminationList.Add(examination);
         }
 
         private void OpenAddExaminationView()

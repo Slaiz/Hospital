@@ -1,4 +1,5 @@
 ﻿using Hospital_ClassLibrary;
+using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
