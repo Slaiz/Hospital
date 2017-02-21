@@ -23,7 +23,7 @@
                 <DataGridTextColumn Binding="{Binding PatientName}" Header="Name" Width="100"/>
                 <DataGridTextColumn Binding="{Binding PatientSurname}" Header="Surname" Width="100"/>
                 <DataGridTextColumn Binding="{Binding BloodType}" Header="BloodType" Width="100"/>
-                <DataGridTextColumn Binding="{Binding BirthDate}" Header="BirthDate" Width="70"/>
+                <DataGridTextColumn Binding="{Binding BirthDate, StringFormat=d}" Header="BirthDate" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
 

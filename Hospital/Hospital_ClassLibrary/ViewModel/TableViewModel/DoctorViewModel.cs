@@ -23,8 +23,6 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
 
         public Doctor SelectedDoctor { get; set; }
 
-        private int index;
-
         public DataWork DWork = new DataWork();
 
         public DoctorViewModel(Func<object, TypeView, IView> createViewAction)
@@ -44,7 +42,9 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
 
         private void DataWorkOnOnUpdateDoctor(Doctor newDoctor, Doctor oldDoctor)
         {
-            index = DoctorList.IndexOf(oldDoctor);
+            var doctor = DoctorList.First(x => x.DoctorID == oldDoctor.DoctorID);
+
+            var index = DoctorList.IndexOf(doctor);
             DoctorList.RemoveAt(index);
             DoctorList.Insert(index, newDoctor);
         }

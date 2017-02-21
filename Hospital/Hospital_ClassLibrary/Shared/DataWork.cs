@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Hospital_ClassLibrary.Model;
 using Hospital_ClassLibrary.ViewModel.Interface;
 
 namespace Hospital_ClassLibrary.Shared
 {
-    public class DataWork:IDataWork
+    public class DataWork : IDataWork
     {
         public static event EventHandler<Doctor> OnAddDoctor;
         public static event EventHandler<Patient> OnAddPatient;
@@ -42,8 +45,69 @@ namespace Hospital_ClassLibrary.Shared
             using (var context = new HospitalEntities())
             {
                 var examination = context.Examinations.ToList();
-                
+
                 return examination;
+            }
+        }
+
+        public List<MainModel> GetMainList()
+        {
+            using (var context = new HospitalEntities())
+            {
+                var main = (from e in context.Examinations
+                            join d in context.Doctors on e.DoctorID equals d.DoctorID
+                            join p in context.Patients on e.PatientID equals p.PatientID
+                            select new MainModel()
+                            {
+                                ExaminationID = e.ExaminationID,
+                                DoctorID = e.DoctorID,
+                                PatientID = e.PatientID,
+                                DateStart = e.DateStart,
+                                TimeStart = e.TimeStart,
+                                TimeEnd = e.TimeEnd,
+                                DoctorId = d.DoctorID,
+                                DoctorName = d.DoctorName,
+                                DoctorSurname = d.DoctorSurname,
+                                Post = d.Post,
+                                Experience = d.Experience,
+                                PatientId = p.PatientID,
+                                PatientName = p.PatientName,
+                                PatientSurname = p.PatientSurname,
+                                BloodType = p.BloodType,
+                                BirthDate = p.BirthDate
+                            }).ToList();
+
+                return main;
+            }
+        }
+
+        public List<MainModel> Find(string findParametr, string nameParametr)
+        {
+            switch (findParametr)
+            {
+                case "Patient Name":
+                    {
+                        var main = GetMainList();
+                        var main2 = main.Where(x => x.PatientName == nameParametr).ToList();
+                        return main2;
+
+                    }
+                case "Doctor Name":
+                    {
+                        var main = GetMainList();
+                        var main2 = main.Where(x => x.DoctorName == nameParametr).ToList();
+                        return main2;
+                    }
+                //case "Date":
+                //    {
+                //        var main = GetMainList();
+                //        var main2 = main.Where(x => x.DateStart == nameParametr).ToList();
+                //        return main2;
+                //    }
+                default:
+                    {
+                        return null;
+                    }
             }
         }
 
@@ -106,7 +170,7 @@ namespace Hospital_ClassLibrary.Shared
         }
 
         public void DeleteDoctor(Doctor selectedItem)
-        {                     
+        {
             using (var context = new HospitalEntities())
             {
                 var doctor = context.Doctors.First(x => x.DoctorID == selectedItem.DoctorID);
@@ -200,50 +264,61 @@ namespace Hospital_ClassLibrary.Shared
         }
 
         #region Event Invoker
-                protected virtual void DoOnAddDoctor(Doctor e)
-                {
-                    OnAddDoctor?.Invoke(this, e);
-                }
+        protected virtual void DoOnAddDoctor(Doctor e)
+        {
+            OnAddDoctor?.Invoke(this, e);
+        }
 
-                protected virtual void DoOnAddPatient(Patient e)
-                {
-                    OnAddPatient?.Invoke(this, e);
-                }
+        protected virtual void DoOnAddPatient(Patient e)
+        {
+            OnAddPatient?.Invoke(this, e);
+        }
 
-                protected virtual void DoOnAddExamination(Examination e)
-                {
-                    OnAddExamination?.Invoke(this, e);
-                }
+        protected virtual void DoOnAddExamination(Examination e)
+        {
+            OnAddExamination?.Invoke(this, e);
+        }
 
-                private static void DoOnDeleteDoctor(Doctor e)
-                {
-                    OnDeleteDoctor?.Invoke(null, e);
-                }
+        private static void DoOnDeleteDoctor(Doctor e)
+        {
+            OnDeleteDoctor?.Invoke(null, e);
+        }
 
-                private static void DoOnDeletePatient(Patient e)
-                {
-                    OnDeletePatient?.Invoke(null, e);
-                }
+        private static void DoOnDeletePatient(Patient e)
+        {
+            OnDeletePatient?.Invoke(null, e);
+        }
 
-                private static void DoOnDeleteExamination(Examination e)
-                {
-                    OnDeleteExamination?.Invoke(null, e);
-                }
+        private static void DoOnDeleteExamination(Examination e)
+        {
+            OnDeleteExamination?.Invoke(null, e);
+        }
 
-                private static void DoOnUpdateDoctor(Doctor e, Doctor p)
-                {
-                    OnUpdateDoctor?.Invoke(e, p);
-                }
+        private static void DoOnUpdateDoctor(Doctor e, Doctor p)
+        {
+            OnUpdateDoctor?.Invoke(e, p);
+        }
 
-                private static void DoOnUpdatePatient(Patient e, Patient p)
-                {
-                    OnUpdatePatient?.Invoke(e, p);
-                }
+        private static void DoOnUpdatePatient(Patient e, Patient p)
+        {
+            OnUpdatePatient?.Invoke(e, p);
+        }
 
-                private static void DoOnUpdateExamination(Examination e, Examination p)
-                {
-                    OnUpdateExamination?.Invoke(e, p);
-                }
+        private static void DoOnUpdateExamination(Examination e, Examination p)
+        {
+            OnUpdateExamination?.Invoke(e, p);
+        }
         #endregion
+
+        public List<string> GetFindParamtrList()
+        {
+            List<string> list = new List<string>();
+
+            list.Add("Patient Name");
+            list.Add("Doctor Name");
+            list.Add("Date");
+
+            return list;
+        }
     }
 }

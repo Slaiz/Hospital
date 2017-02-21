@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Hospital_ClassLibrary.Shared;
@@ -37,9 +38,13 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
             DeletePatientCommand = new MainCommand(arg => DeletePatient());
         }
 
-        private void DataWorkOnOnUpdatePatient(Patient patient, Patient patient1)
+        private void DataWorkOnOnUpdatePatient(Patient newPatient, Patient oldPatient)
         {
-            throw new NotImplementedException();
+            var patient = PatientList.First( x => x.PatientID == oldPatient.PatientID);
+
+            var index = PatientList.IndexOf(patient);
+            PatientList.RemoveAt(index);
+            PatientList.Insert(index, patient);
         }
 
         private void DataWorkOnOnDeletePatient(object sender, Patient patient)

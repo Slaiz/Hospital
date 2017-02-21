@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Model\DoctorModel.cs" />
     <Compile Include="Model\ExaminationModel.cs" />
+    <Compile Include="Model\MainModel.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Patient.cs">
       <DependentUpon>HospitalModel.tt</DependentUpon>

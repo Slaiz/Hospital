@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Documents;
 using System.Windows.Input;
+using Hospital_ClassLibrary.Model;
 using Hospital_ClassLibrary.Shared;
 using Hospital_ClassLibrary.ViewModel.Command;
 using Hospital_ClassLibrary.ViewModel.Interface;
+using PropertyChanged;
 
 namespace Hospital_ClassLibrary.ViewModel
 {
+    [ImplementPropertyChanged]
     public class MainViewModel
     {
         
@@ -13,17 +19,33 @@ namespace Hospital_ClassLibrary.ViewModel
         public ICommand OpenPatientTableCommand { get; set; }
         public ICommand OpenExaminationTableCommand { get; set; }
         public ICommand OpenAddExaminationViewCommand { get; set; }
+        public ICommand FindCommand { get; set; }
+
+        public DataWork DWork = new DataWork();
 
         public Func<object, TypeView, IView> CreateViewAction { get; set; }
+        public ObservableCollection<MainModel> MainList { get; set; }
+        public ObservableCollection<string> FindParametrList { get; set; }
+        public string FindParametr { get; set; }
+        public string NameParametr { get; set; }
 
         public MainViewModel(Func<object, TypeView, IView> createViewAction)
-        {
+        { 
             CreateViewAction = createViewAction;
+
+            MainList = new ObservableCollection<MainModel>(DWork.GetMainList());
+            FindParametrList = new ObservableCollection<string>(DWork.GetFindParamtrList());
 
             OpenDoctorTableCommand = new MainCommand(arg => OpenDoctorTable());
             OpenPatientTableCommand = new MainCommand(arg => OpenPatientTable());
             OpenExaminationTableCommand = new MainCommand(arg => OpenExaminationTable());
             OpenAddExaminationViewCommand = new MainCommand(arg => OpenAddExaminationView());
+            FindCommand = new MainCommand(arg => Find(FindParametr, NameParametr));
+        }
+
+        private void Find(string FindParametr, string NameParametr)
+        {
+            MainList = new ObservableCollection<MainModel>(DWork.Find(FindParametr, NameParametr));
         }
 
         public void OpenDoctorTable()
