@@ -87,23 +87,19 @@ namespace Hospital_ClassLibrary.Shared
             {
                 case "Patient Name":
                     {
-                        var main = GetMainList();
-                        var main2 = main.Where(x => x.PatientName == nameParametr).ToList();
-                        return main2;
-
+                        var main = GetMainList().Where(x => x.PatientName.Contains(nameParametr)).ToList();
+                        return main;
                     }
                 case "Doctor Name":
                     {
-                        var main = GetMainList();
-                        var main2 = main.Where(x => x.DoctorName == nameParametr).ToList();
-                        return main2;
+                        var main = GetMainList().Where(x => x.DoctorName.Contains(nameParametr)).ToList();
+                        return main;
                     }
-                //case "Date":
-                //    {
-                //        var main = GetMainList();
-                //        var main2 = main.Where(x => x.DateStart == nameParametr).ToList();
-                //        return main2;
-                //    }
+                case "Date":
+                    {
+                        var main = GetMainList().Where(x => x.DateStart.ToShortDateString().Contains(nameParametr)).ToList();
+                        return main;
+                    }
                 default:
                     {
                         return null;

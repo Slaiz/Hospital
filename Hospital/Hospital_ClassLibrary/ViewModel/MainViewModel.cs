@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Documents;
 using System.Windows.Input;
 using Hospital_ClassLibrary.Model;
@@ -45,7 +46,12 @@ namespace Hospital_ClassLibrary.ViewModel
 
         private void Find(string FindParametr, string NameParametr)
         {
-            MainList = new ObservableCollection<MainModel>(DWork.Find(FindParametr, NameParametr));
+            MainList.Clear();
+
+            foreach (var item in DWork.Find(FindParametr, NameParametr))
+            {
+                MainList.Add(item) ;
+            }
         }
 
         public void OpenDoctorTable()
