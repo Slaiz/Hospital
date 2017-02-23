@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using Hospital_ClassLibrary.Shared;
@@ -9,7 +12,7 @@ using PropertyChanged;
 namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 {
     [ImplementPropertyChanged]
-    public class AddExaminationViewModel:IExaminationViewModel
+    public class AddExaminationViewModel : IExaminationViewModel
     {
         public ICommand OpenDoctorTableCommand { get; set; }
         public ICommand OpenPatientTableCommand { get; set; }
@@ -18,17 +21,34 @@ namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 
         private DataWork DWork = new DataWork();
 
-        public int DoctorID { get; set; }
-        public int PatientID { get; set; }
+        public Doctor Doctor { get; set; }
+        public Patient Patient { get; set; }
         public DateTime DateStart { get; set; }
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
+        public List<Doctor> DoctorList { get; set; }
+        public List<Patient> PatientList { get; set; }
 
         public Func<object, TypeView, IView> CreateViewAction { get; set; }
 
         public AddExaminationViewModel(Func<object, TypeView, IView> createViewAction)
         {
             CreateViewAction = createViewAction;
+
+            DoctorList = new List<Doctor>();
+            PatientList = new List<Patient>();
+
+            foreach (var item in DWork.GetDoctorList())
+            {
+                DoctorList.Add(item);
+            }
+
+            foreach (var item in DWork.GetPatientList())
+            {
+                PatientList.Add(item);
+            }
+
+            DateStart = DateTime.Now;
 
             OpenDoctorTableCommand = new MainCommand(arg => OpenDoctorTable());
             OpenPatientTableCommand = new MainCommand(arg => OpenPatientTable());
@@ -50,15 +70,22 @@ namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 
         private void ClearFields()
         {
-            DoctorID = 0;
-            PatientID = 0;
+            DateStart = DateTime.Now;
+            TimeStart = TimeSpan.Zero;
+            TimeEnd = TimeSpan.Zero; 
         }
 
         private void AddExamination()
         {
-            DWork.AddExamination(DoctorID, PatientID, DateStart, TimeStart, TimeEnd);
+            string str;
+            str = DWork.CheckTime(TimeStart, TimeEnd);
 
-            MessageBox.Show("Examination was added !");
+            if (str == null)
+            {
+                DWork.AddExamination(Doctor.DoctorID, Patient.PatientID, DateStart, TimeStart, TimeEnd);
+                MessageBox.Show("Examination was added !");
+            }
+            else MessageBox.Show(str);
         }
 
     }

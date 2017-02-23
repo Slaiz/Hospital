@@ -19,6 +19,7 @@ namespace Hospital_ClassLibrary.Shared
         public static event Action<Doctor, Doctor> OnUpdateDoctor;
         public static event Action<Patient, Patient> OnUpdatePatient;
         public static event Action<Examination, Examination> OnUpdateExamination;
+        public static event EventHandler OnUpdateMainModel;
 
         public List<Doctor> GetDoctorList()
         {
@@ -60,8 +61,6 @@ namespace Hospital_ClassLibrary.Shared
                             select new MainModel()
                             {
                                 ExaminationID = e.ExaminationID,
-                                DoctorID = e.DoctorID,
-                                PatientID = e.PatientID,
                                 DateStart = e.DateStart,
                                 TimeStart = e.TimeStart,
                                 TimeEnd = e.TimeEnd,
@@ -81,21 +80,32 @@ namespace Hospital_ClassLibrary.Shared
             }
         }
 
-        public List<MainModel> Find(string findParametr, string nameParametr)
+        public List<string> GetFindParamtrList()
+        {
+            List<string> list = new List<string>();
+
+            list.Add(NameFindParamtr.Patient_Name.ToString());
+            list.Add(NameFindParamtr.Doctor_Name.ToString());
+            list.Add(NameFindParamtr.Date.ToString());
+
+            return list;
+        }
+
+        public List<MainModel> Find(NameFindParamtr findParametr, string nameParametr)
         {
             switch (findParametr)
             {
-                case "Patient Name":
+                case NameFindParamtr.Patient_Name:
                     {
                         var main = GetMainList().Where(x => x.PatientName.Contains(nameParametr)).ToList();
                         return main;
                     }
-                case "Doctor Name":
+                case NameFindParamtr.Doctor_Name:
                     {
                         var main = GetMainList().Where(x => x.DoctorName.Contains(nameParametr)).ToList();
                         return main;
                     }
-                case "Date":
+                case NameFindParamtr.Date:
                     {
                         var main = GetMainList().Where(x => x.DateStart.ToShortDateString().Contains(nameParametr)).ToList();
                         return main;
@@ -105,6 +115,18 @@ namespace Hospital_ClassLibrary.Shared
                         return null;
                     }
             }
+        }
+
+        public string CheckTime(TimeSpan timeStart, TimeSpan timeEnd)
+        {
+            string str = null;
+
+            if (timeStart < timeEnd)
+                str = " Time End can not biger than Time Start ";
+            if (timeStart <= timeEnd + TimeSpan.FromMinutes(20))
+                str = " Examination must be most 20 minites ";
+
+            return str;
         }
 
         public void AddDoctor(string doctorName, string doctorSurname, string post, int experience)
@@ -162,6 +184,7 @@ namespace Hospital_ClassLibrary.Shared
                 context.SaveChanges();
 
                 DoOnAddExamination(exm);
+                DoOnUpdateMainModel();
             }
         }
 
@@ -204,6 +227,8 @@ namespace Hospital_ClassLibrary.Shared
                 context.SaveChanges();
 
                 DoOnDeleteExamination(examination);
+                DoOnUpdateMainModel();
+
             }
         }
 
@@ -256,6 +281,7 @@ namespace Hospital_ClassLibrary.Shared
                 context.SaveChanges();
 
                 DoOnUpdateExamination(examination, selectedItem);
+                DoOnUpdateMainModel();
             }
         }
 
@@ -304,17 +330,12 @@ namespace Hospital_ClassLibrary.Shared
         {
             OnUpdateExamination?.Invoke(e, p);
         }
-        #endregion
 
-        public List<string> GetFindParamtrList()
+        private static void DoOnUpdateMainModel()
         {
-            List<string> list = new List<string>();
-
-            list.Add("Patient Name");
-            list.Add("Doctor Name");
-            list.Add("Date");
-
-            return list;
+            OnUpdateMainModel?.Invoke(null, EventArgs.Empty);
         }
+
+        #endregion
     }
 }

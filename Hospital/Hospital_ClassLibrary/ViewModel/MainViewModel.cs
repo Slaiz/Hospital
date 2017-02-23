@@ -27,12 +27,14 @@ namespace Hospital_ClassLibrary.ViewModel
         public Func<object, TypeView, IView> CreateViewAction { get; set; }
         public ObservableCollection<MainModel> MainList { get; set; }
         public ObservableCollection<string> FindParametrList { get; set; }
-        public string FindParametr { get; set; }
+        public NameFindParamtr FindParametr { get; set; }
         public string NameParametr { get; set; }
 
         public MainViewModel(Func<object, TypeView, IView> createViewAction)
         { 
             CreateViewAction = createViewAction;
+
+            DataWork.OnUpdateMainModel +=DataWorkOnOnUpdateMainModel;
 
             MainList = new ObservableCollection<MainModel>(DWork.GetMainList());
             FindParametrList = new ObservableCollection<string>(DWork.GetFindParamtrList());
@@ -44,7 +46,17 @@ namespace Hospital_ClassLibrary.ViewModel
             FindCommand = new MainCommand(arg => Find(FindParametr, NameParametr));
         }
 
-        private void Find(string FindParametr, string NameParametr)
+        private void DataWorkOnOnUpdateMainModel(object sender, EventArgs eventArgs)
+        {
+            MainList.Clear();
+
+            foreach (var item in DWork.GetMainList())
+            {
+                MainList.Add(item);
+            }
+        }
+
+        private void Find(NameFindParamtr FindParametr, string NameParametr)
         {
             MainList.Clear();
 

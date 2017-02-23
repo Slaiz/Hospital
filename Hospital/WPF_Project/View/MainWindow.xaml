@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="600" MinWidth="1000" MaxHeight="600" MaxWidth="1000">
+        Title="MainWindow" MinHeight="600" MinWidth="1050" MaxHeight="600" MaxWidth="1050">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="900"/>
+            <ColumnDefinition Width="950"/>
             <ColumnDefinition Width="110"/>
         </Grid.ColumnDefinitions>
         
@@ -21,7 +21,9 @@
                 <Run FontSize="32" Foreground="Red" FontWeight="Bold"> Hospital </Run>
             </TextBlock>
             <ComboBox DockPanel.Dock="Left" Height="35" Width="120" Margin="5 0 5 0" ItemsSource="{Binding FindParametrList}" SelectedItem="{Binding FindParametr}"/>
-                <TextBox Height="35" Width="240" HorizontalAlignment="Left" Text="{Binding NameParametr, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0"/>
+            
+            <TextBox Height="35" Width="240" HorizontalAlignment="Left" Text="{Binding NameParametr, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0"/>
+            
             <Button Background="SlateGray" Focusable="False" Content="Find" Command="{Binding FindCommand}" Height="35" Width="75" Margin="0 0 5 0"/>
             <Button DockPanel.Dock="Right" Focusable="False" Background="MediumVioletRed" Content="Add Examination" Command="{Binding OpenAddExaminationViewCommand}" Height="35" Width="100" Margin="0 0 -200 0" />
         </DockPanel>
@@ -35,18 +37,18 @@
         </ToolBarTray>
         
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <DataGrid AutoGenerateColumns="True" IsReadOnly="True" ItemsSource = "{Binding MainList}"
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource = "{Binding MainList}"
                       Height="470" Margin="0 10 0 0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ExaminationID}" Header="Id" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding DateStart, StringFormat=d}" Header="DateStart" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding TimeStart}" Header="TimeStart" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding TimeEnd}" Header="TimeEnd" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding DoctorID}" Header="DoctorID" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding DoctorId}" Header="DoctorId" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding DoctorName}" Header="DoctorName" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding DoctorSurname}" Header="DoctorSurname" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding Post}" Header="Post" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding PatientID}" Header="PatientID" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding PatientId}" Header="PatientId" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding PatientName}" Header="PatientName" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding PatientSurname}" Header="PatientSurname" Width="Auto"/>
                     <DataGridTextColumn Binding="{Binding BloodType}" Header="BloodType" Width="Auto"/>

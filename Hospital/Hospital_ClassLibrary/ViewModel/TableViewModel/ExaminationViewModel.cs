@@ -13,7 +13,7 @@ namespace Hospital_ClassLibrary.ViewModel.TableViewModel
     {
         public ICommand OpenAddExaminationViewCommand { get; set; }
         public ICommand OpenEditExaminationViewCommand { get; set; }
-        public ICommand DeleteExaminationCommand { get; set; }
+        public ICommand DeleteExaminationCommand { get; set; } 
 
         public Func<object, TypeView, IView> CreateViewAction { get; set; }
 

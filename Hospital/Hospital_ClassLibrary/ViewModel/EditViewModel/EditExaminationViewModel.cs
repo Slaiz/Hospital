@@ -24,6 +24,8 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
 
         public EditExaminationViewModel(Examination selectedItem)
         {
+            DateStart = DateTime.Now;
+
             DoctorID = selectedItem.DoctorID;
             PatientID = selectedItem.PatientID;
             DateStart = selectedItem.DateStart;

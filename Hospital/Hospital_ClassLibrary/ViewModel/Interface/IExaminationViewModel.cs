@@ -7,10 +7,6 @@ namespace Hospital_ClassLibrary.ViewModel.Interface
     {
         ICommand ClearFieldsCommand { get; set; }
 
-        int DoctorID { get; set; }
-
-        int PatientID { get; set; }
-
         DateTime DateStart { get; set; }
 
         TimeSpan TimeStart { get; set; }

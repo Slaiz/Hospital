@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Input;
 using Hospital_ClassLibrary.Shared;
@@ -23,6 +24,8 @@ namespace Hospital_ClassLibrary.ViewModel.AddViewModel
 
         public AddPatientViewModel()
         {
+            BirthDate= new DateTime(1930, 1, 1);
+
             ClearFieldsCommand = new MainCommand(arg => ClearFields());
             AddPatientCommand = new MainCommand(arg => AddPatient());
         }

@@ -23,6 +23,8 @@ namespace Hospital_ClassLibrary.ViewModel.EditViewModel
 
         public EditPatientViewModel(Patient selectedItem)
         {
+            BirthDate = new DateTime(1930, 1, 1);
+
             PatientName = selectedItem.PatientName;
             PatientSurname = selectedItem.PatientSurname;
             BloodType = selectedItem.BloodType;

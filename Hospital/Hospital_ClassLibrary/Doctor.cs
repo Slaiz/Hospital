@@ -28,5 +28,10 @@ namespace Hospital_ClassLibrary
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
+
+        public override string ToString()
+        {
+            return $" {DoctorID.ToString():5} {DoctorName:20} {DoctorSurname:20} {Post:8} ";
+        }
     }
 }
